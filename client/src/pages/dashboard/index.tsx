@@ -1,4 +1,10 @@
-export const Dashboard = () =>{
+import { useUser } from "@clerk/clerk-react";
 
-    return <h1>Dashboard</h1>
-}
+export const Dashboard = () => {
+  const { user } = useUser();
+  return (
+    <div className="dashboard-container">
+      <h1>Hello {user?.firstName}! Here are your finances!</h1>
+    </div>
+  );
+};
