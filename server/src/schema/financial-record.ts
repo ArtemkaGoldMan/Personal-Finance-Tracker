@@ -6,7 +6,7 @@ interface FinancialRecord {
   description: string;
   amount: number;
   category: string;
-  paymantMethod: string;
+  paymentMethod: string;
 }
 
 const financialRecordSchema = new mongoose.Schema<FinancialRecord>({
@@ -15,7 +15,7 @@ const financialRecordSchema = new mongoose.Schema<FinancialRecord>({
   description: { type: String, required: true },
   amount: { type: Number, required: true },
   category: { type: String, required: true },
-  paymantMethod: { type: String, required: true },
+  paymentMethod: { type: String, required: true },
 });
 
 const FinancialRecordModel = mongoose.model<FinancialRecord>(
