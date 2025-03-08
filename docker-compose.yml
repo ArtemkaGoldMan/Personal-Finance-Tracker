@@ -1,0 +1,33 @@
+services:
+  client:
+    container_name: financetracker-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        - VITE_CLERK_PUBLISHABLE_KEY=${VITE_CLERK_PUBLISHABLE_KEY}
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    environment:
+      - VITE_CLERK_PUBLISHABLE_KEY=${VITE_CLERK_PUBLISHABLE_KEY}
+    networks:
+      - finance-tracker-network
+
+  server:
+    container_name: financetracker-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
+      - PORT=3001
+    networks:
+      - finance-tracker-network
+
+networks:
+  finance-tracker-network:
+    driver: bridge 

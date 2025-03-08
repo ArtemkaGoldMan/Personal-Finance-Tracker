@@ -4,8 +4,16 @@ import App from './App.tsx'
 import './index.css'
 import { ClerkProvider } from '@clerk/clerk-react'
 
-// Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+declare global {
+  interface Window {
+    ENV: {
+      VITE_CLERK_PUBLISHABLE_KEY: string;
+    };
+  }
+}
+
+// Get the Publishable Key from window.ENV
+const PUBLISHABLE_KEY = window.ENV?.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
