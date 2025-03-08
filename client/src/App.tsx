@@ -1,13 +1,21 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Dashboard } from "./pages/dashboard";
 import { Auth } from "./pages/auth";
 import { FinancialRecordsProvider } from "./contexts/financial-record-context";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
+// import { dark } from "@clerk/themes";
 
-export default function App() {
+function App() {
   return (
     <Router>
       <div className="app-container">
+        <div className="navbar">
+          <Link to="/"> Dashboard</Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
         <Routes>
           <Route
             path="/"
@@ -23,3 +31,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;
