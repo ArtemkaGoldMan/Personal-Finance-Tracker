@@ -1,88 +1,110 @@
 # Finance Tracker
 
-A full-stack finance tracking application with a React frontend and Express backend.
+A full-stack personal finance tracking application built as a learning project to explore modern web development technologies, TypeScript, and cloud services.
 
-## Docker Setup
+## 🎓 Learning Project
 
-This project is containerized using Docker, making it easy to run both the client and server components together.
+This project was created as part of my journey to learn:
+- TypeScript/JavaScript development
+- Modern web development practices
+- Full-stack application architecture
+- Cloud services integration
+- Docker containerization
+- Authentication implementation
+
+## 🚀 Technologies Used
+
+### Frontend
+- **React** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Build tool and development server
+- **@clerk/clerk-react** - Authentication and user management
+- **@tanstack/react-table** - Table management and data display
+- **React Router** - Client-side routing
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express** - Web framework
+- **TypeScript** - Type-safe JavaScript
+- **MongoDB** - Database (Cloud Atlas)
+- **Mongoose** - MongoDB object modeling
+
+### DevOps & Tools
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container orchestration
+- **Nginx** - Web server and reverse proxy
+- **ESLint** - Code linting
+- **Git** - Version control
+
+## 🏗️ Architecture
+
+The application follows a modern microservices architecture:
+- Frontend container running React/Vite application
+- Backend container running Express/Node.js API
+- MongoDB Atlas for cloud database
+- Nginx for serving static files and API proxying
+
+## 🛠️ Setup and Installation
 
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
+- MongoDB Atlas account (for database)
+- Clerk account (for authentication)
 
 ### Environment Variables
 
-The project uses environment variables for configuration. These are stored in the `.env` file at the root of the project.
-
-- `VITE_CLERK_PUBLISHABLE_KEY`: Your Clerk publishable key for authentication
-- `MONGO_DB_PASSWORD`: Password for MongoDB Atlas connection
-
-### Running with Docker Compose
-
-1. Clone the repository
-2. Navigate to the project root directory
-3. Run the following command to start both client and server:
+Create a `.env` file in the root directory with:
 
 ```bash
-docker-compose up
+# Client
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
+
+# Server
+MONGO_DB_PASSWORD=your_mongodb_password
 ```
 
-This will:
-- Build the client and server Docker images
-- Start the containers
-- Connect them via a Docker network
-- Expose the client on port 80 and the server on port 3001
+### Running with Docker
 
-To run in detached mode (in the background):
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/finance-tracker.git
+cd finance-tracker
+```
 
+2. Start the application:
 ```bash
 docker-compose up -d
 ```
 
-To stop the containers:
-
-```bash
-docker-compose down
-```
-
-### Accessing the Application
-
+The application will be available at:
 - Frontend: http://localhost
 - Backend API: http://localhost:3001
 
-### Troubleshooting
+### Development Without Docker
 
-If you encounter build issues:
-
-1. **TypeScript Errors**: The client Dockerfile is configured to ignore TypeScript errors during the build process. If you're still seeing TypeScript errors, you can modify the `build:docker` script in the client's package.json.
-
-2. **MongoDB Connection**: The server is configured to connect to MongoDB Atlas. Make sure your MongoDB Atlas credentials are correct in the `.env` file.
-
-3. **Rebuilding Images**: If you need to rebuild the Docker images from scratch, use:
-   ```bash
-   docker-compose build --no-cache
-   ```
-
-## Development Without Docker
-
-### Client
-
+#### Client
 ```bash
 cd client
 npm install
 npm run dev
 ```
 
-### Server
-
+#### Server
 ```bash
 cd server
 npm install
 npm run dev
 ```
 
-## Project Structure
+## 🌟 Features
 
-- `/client`: React frontend built with Vite
-- `/server`: Express backend with MongoDB connection 
+- User authentication with Clerk
+- Financial transaction tracking
+- Transaction categorization
+- Data visualization
+- Responsive design
+- RESTful API
+- MongoDB cloud integration
+
